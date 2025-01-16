@@ -1,0 +1,3 @@
+Today I learned somthing...
+
+- 25/01/16 : git 사용법
