@@ -1,5 +1,5 @@
 ### 참고사항
-![alt text](../IMAGE/image.png)
+![alt text](../IMAGE/error_E325.png)
 - E325 에러 발생 시
 ```markdown
 만약 git 작업하던도중 강제종료 당하거나 멈추었을때 강제로 나가게 되면 이렇게 기존의 작업 하던 commit이 남아 있어 처리해달라고 에러가 발생한다.
