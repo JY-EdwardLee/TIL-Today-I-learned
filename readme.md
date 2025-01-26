@@ -9,3 +9,4 @@
 - 25/01/21(화) : Basic syntax1 (sequence/non-sequence/기타 자료형, 형변환, 연산산)
 - 25/01/22(수) : Funtions
 - 25/01/23(목) : Modules & Control of flow
+- 25/01/24(금) : Data  Structure, 얕은/깊은 복사
