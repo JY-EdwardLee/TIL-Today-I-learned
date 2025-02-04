@@ -10,7 +10,7 @@ for test_case in range(1, T + 1):
     YYYY = data[:4]
     MM = data[4:6]
     DD = data[6:8]
-    YYYY_int = int(data[:3])
+    YYYY_int = int(data[:4])
     MM_int = int(data[4:6])
     DD_int = int(data[6:8])
     if 0 < MM_int < 13:
@@ -26,7 +26,7 @@ for test_case in range(1, T + 1):
                 print(f'#{test_case} -1')
         elif MM_int in days_30:
             if 1 <= DD_int <= 30:
-                print(f'{test_case} {YYYY}/{MM}/{DD}')
+                print(f'#{test_case} {YYYY}/{MM}/{DD}')
             else:
                 print(f'#{test_case} -1')
     else:

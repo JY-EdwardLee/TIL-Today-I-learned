@@ -8,5 +8,5 @@ for test_case in range(1, T + 1):
     for number in data:
         sum_data = sum_data + number
     mean_data = sum_data/len(data)
-    print(f'{int(round(mean_data, 0))}')
+    print(f'#{test_case} {int(round(mean_data, 0))}')
     # ///////////////////////////////////////////////////////////////////////////////////
