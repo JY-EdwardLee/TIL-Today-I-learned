@@ -12,7 +12,7 @@ for test_case in range(1, T + 1):
     DD = data[6:8]
     YYYY_int = int(data[:3])
     MM_int = int(data[4:6])
-    DD_int = int(data[7:9])
+    DD_int = int(data[6:8])
     if 0 < MM_int < 13:
         if MM_int == 2:
             if 1 <= DD_int <=28:
