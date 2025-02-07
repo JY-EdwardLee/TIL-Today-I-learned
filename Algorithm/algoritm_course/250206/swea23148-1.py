@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open("input.txt", "r")
+sys.stdin = open("../input.txt", "r")
 
 # 노선 수 T
 T = int(input())
