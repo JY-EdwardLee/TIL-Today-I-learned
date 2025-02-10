@@ -1,18 +1,20 @@
-import sys
-sys.stdin = open("input.txt", "r")
+# import sys
+# sys.stdin = open("input.txt", "r")
 
 T = 10
 
 def find_max(arr):
     # 행 합
     raw_max = 0
-    for i in range(100):
-        if raw_max < sum(arr[i]):
-            raw_max = sum(arr[i])
+    # for i in range(100):
+    #     if raw_max < sum(arr[i]):
+    #         raw_max = sum(arr[i])
     # 열 합
     col_max = 0
     for j in range(100):
         j_max = 0
+        if raw_max < sum(arr[j]):
+            raw_max = sum(arr[j])
         for i in range(100):
             j_max += arr[i][j]
         if col_max < j_max:
