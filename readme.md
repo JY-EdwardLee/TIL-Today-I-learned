@@ -1,8 +1,9 @@
 > Today I learned somthing...
 
 
-### SSAFY
+## SSAFY
 
+### 1월 - 파이썬 
 - 25/01/16(목) : git 사용법
 - 25/01/17(금) : git 사용법(ver.2)/chatGPT API 활용하기
 - 25/01/20(월) : Basic syntax1 (python, numeric/sequence 자료형)
@@ -10,3 +11,5 @@
 - 25/01/22(수) : Funtions
 - 25/01/23(목) : Modules & Control of flow
 - 25/01/24(금) : Data  Structure, 얕은/깊은 복사
+
+### 2월 - 파이썬, 알고리즘
