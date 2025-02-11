@@ -3,10 +3,11 @@ sys.stdin = open('input.txt', 'r')
 
 
 def euiseoki(case_list):
-    max_len = 0
+    # max_len = 0
     euiseoksik_word = ""
-    for i in case_list:
-        max_len = max(max_len, len(i))
+    # for i in case_list:
+    #     max_len = max(max_len, len(i))
+    max_len = max(map(len,case_list))
     for i in range(max_len):
         for j in range(len(case_list)):
             try:
