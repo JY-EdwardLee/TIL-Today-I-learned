@@ -11,25 +11,25 @@ def snail(N):
     i = 0
     j = 0
     while i != N//2 or j != N//2:
-        if j < N-1:
+        while j < N-1:
             num += 1
             if arr[i][j] == 0:
                 arr[i][j] = num
                 j += 1
 
-        if i < N-1:
+        while i < N-1:
             num += 1
             if arr[i][j] == 0:
                 arr[i][j] = num
                 i += 1
 
-        if 0 < j:
+        while 0 < j:
             num += 1
             if arr[i][j] == 0:
                 arr[i][j] = num
                 j -= 1
 
-        if 1 < i:
+        while 1 < i:
             num +=1
             if arr[i][j] == 0:
                 arr[i][j] = num
