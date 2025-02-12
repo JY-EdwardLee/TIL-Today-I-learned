@@ -1,12 +1,12 @@
 import sys
-sys.stdin = open("input.txt", "r")
+sys.stdin = open("../input.txt", "r")
 
 T = int(input())
 
 def paris_dist(d, a, b, f):
     flag = 1
     dist = 0
-    while round(d, 100) > 0:
+    while round(d, 10) != 0:
         if flag:
             # 거리 = 속력/시간
             # 시간 = (기차속력 + 파리속력)/거리
@@ -24,5 +24,4 @@ def paris_dist(d, a, b, f):
 
 for tc in range(1, T+1):
     d, a, b, f = map(int, input().split())
-    print(paris_dist(d, a, b, f))
-
+    print(f'# {tc} {paris_dist(d, a, b, f)}')
