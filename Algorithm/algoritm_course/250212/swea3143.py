@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open("input.txt", "r")
+sys.stdin = open("../input.txt", "r")
 
 
 T = int(input())
@@ -22,6 +22,9 @@ def typing(a, b):
         if j == M:
             j = 0
             cnt += 1
+        if i == N and j != 0:
+            cnt += j
+
     return cnt
 
 

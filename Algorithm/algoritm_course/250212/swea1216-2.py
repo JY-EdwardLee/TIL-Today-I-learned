@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open("input.txt", "r")
+sys.stdin = open("../input.txt", "r")
 
 
 def palindrome(arr, memory):
@@ -28,8 +28,10 @@ for _ in range(1, 11):
         dist = palindrome(arr[i], max_dist)
         max_dist = max(dist, max_dist)
     # 세로로 회문 탐색
-    turn_arr = [list(i) for i in zip(*arr)]
     for j in range(100):
-        dist = palindrome(turn_arr[j], max_dist)
+        j_arr = []
+        for i in range(100):
+            j_arr.append(arr[i][j])
+        dist = palindrome(j_arr, max_dist)
         max_dist = max(dist, max_dist)
     print(f'#{tc} {max_dist}')

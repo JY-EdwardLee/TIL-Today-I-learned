@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open('input.txt', encoding='utf-8')
+sys.stdin = open('../input.txt', encoding='utf-8')
 
 
 def count_word(search_w, search_s):
