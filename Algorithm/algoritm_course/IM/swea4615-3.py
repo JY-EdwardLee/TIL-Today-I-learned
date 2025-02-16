@@ -1,29 +1,32 @@
 import sys
-sys.stdin = open("input.txt", "r")
+sys.stdin = open("../input.txt", "r")
 
 T = int(input())
 
-def change_arr(check, h, n):
-    for r_position in range(h + 1, n):
-        if check[r_position] == c:
-            for i in range(h + 1, r_position):
-                check[i] = c
-            break
-        if check[r_position] == 0:
-            break
-    for l_position in range(h - 1, -1, -1):
-        if check[l_position] == c:
-            for i in range(l_position, h):
-                check[i] = c
-            break
-        if check[l_position] == 0:
-            break
+def change_check(check, start, n, color):
+    for r_position in range(start + 1, n):
+        if check[r_position] == color:
+            for change in range(start + 1, r_position):
+                check[change] = color
+            break   # for r_position
+        elif check[r_position] == 0 or check[r_position] == -1:
+            break   # for r_position
+    for l_position in range(start - 1, -1, -1):
+        if check[l_position] == color:
+            for change in range(l_position + 1, start):
+                check[change] = color
+            break   # for l_position
+        elif check[l_position] == 0 or check[l_position] == -1:
+            break   # for l_position
 
 def othello(v, h, c, arr, n):
     # 체크리스트 생성
     check_list = []
     # v 행을 0~n-1 까지 리스트 형태로 추가
-    check_list.append(arr[v])
+    garo_list = []
+    for i in range(n):
+        garo_list.append(arr[v][h])
+    check_list.append(garo_list)
     # h 열을 0~n-1 까지 리스트 형태로 추가
     sero_list = []
     for i in range(n):
@@ -59,9 +62,9 @@ def othello(v, h, c, arr, n):
     # 체크 리스트 점검 후 변경
     for check in check_list:
         if check != check_list[1]:
-            change_arr(check, h, n)
+            change_check(check, h, n, c)
         else:
-            change_arr(check, v, n)
+            change_check(check, v, n, c)
     # 가로
     arr[v] = check_list[0]
     # 세로
@@ -85,11 +88,11 @@ for tc in range(1, T+1):
     arr[N//2][N//2], arr[N//2-1][N//2-1] = 2, 2
     arr[N//2][N//2 - 1], arr[N//2 - 1][N//2] = 1, 1
     for _ in range(M):
-        v, h, c = map(int, input().split())
-        v -= 1
-        h -= 1
-        arr[v][h] = c
-        othello(v, h, c, arr, N)
+        x, y, c = map(int, input().split())
+        x -= 1
+        y -= 1
+        arr[y][x] = c
+        othello(y, x, c, arr, N)
     white = 0
     black = 0
     for i in range(N):

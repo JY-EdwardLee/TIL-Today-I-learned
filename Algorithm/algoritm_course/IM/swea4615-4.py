@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open("input.txt", "r")
+sys.stdin = open("../input.txt", "r")
 
 T = int(input())
 
@@ -57,7 +57,7 @@ def othello(row, col, color, n, arr):
     if (0 <= row - 1) and (col + 1 < n):
         if arr[row-1][col+1] != 0:
             for i, j in zip(range(row-1, -1, -1), range(col+1, n)):
-                                                       if arr[i][j] == color:
+                if arr[i][j] == color:
                     for x, y in zip(range(row-1, i, -1), range(col+1, j)):
                         arr[x][y] = color
                     break
