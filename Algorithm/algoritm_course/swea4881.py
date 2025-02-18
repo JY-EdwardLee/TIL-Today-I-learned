@@ -19,4 +19,4 @@ for tc in range(1, T+1):
     p = [i for i in range(N)]
     arr = [list(map(int, input().split())) for _ in range(N)]
     min_v = 10000
-    print(f'#{tc} {f(0, N, min_v)}')
+    print(f'#{tc} {f(0, N, 0)}')
