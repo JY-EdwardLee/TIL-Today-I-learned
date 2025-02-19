@@ -5,25 +5,28 @@ sys.stdin = open("input.txt", "r")
 # 사람의 수 N, K번째 나열
 n = int(input())
 k = int(input())
-arr = [num for num in range(1, n+1)]
 
 
 def solution(n, k):
+    arr = [num for num in range(1, n+1)]
     answer = None
-    i = 0
     count = 0
+    i = 0
     def f(i, n):
-    if i == n:
-        return
-        for j in range(n):
-            arr[i], arr[j] = arr[j], arr[i]
+        nonlocal answer
+        nonlocal count
+        if i == n:
+            print(arr)
+            count += 1
+            if count == k:
+                answer = arr[:]
+        else:
+                for j in range(i, n):
+                    arr.insert(i, arr.pop(i))
+                    f(i+1, n)
+                    arr.insert(j, arr.pop(i))
+    f(i, n)
+    return answer
 
 
-
-
-
-
-    print(answer)
-
-
-solution(n, k)
+print(solution(n, k))

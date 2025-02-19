@@ -7,6 +7,7 @@ def line(guide, n):
     cnt = 0
     for i in range(n):
         if guide[i] == '(':
+            pass
         elif guide[i] == ')':
             if stack:
                if stack[-1] == '(':
