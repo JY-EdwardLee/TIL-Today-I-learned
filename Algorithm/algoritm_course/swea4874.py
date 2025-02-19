@@ -9,28 +9,34 @@ def cal(post_fix):
     stack = []
     for x in post_fix:
         if x not in '/*-+.':
-            stack.append(x)
+            stack.append(int(x))
         elif x == '.':
             if len(stack) == 1:
                 result = stack.pop()
+                break
             else:
                 return 'error'
         else:
             if not stack:
                 return 'error'
-            o2 = int(stack.pop())
+            o2 = stack.pop()
             if not stack:
                 return 'error'
-            o1 = int(stack.pop())
+            o1 = stack.pop()
             if x == '/':
-                stack.append(o1 / o2)
+                data = o1 // o2
+                stack.append(data)
             elif x == '*':
-                stack.append(o1 * o2)
+                data = o1 * o2
+                stack.append(data)
             elif x == '-':
-                stack.append(o1 - o2)
+                data = o1 - o2
+                stack.append(data)
             elif x == '+':
-                stack.append(o1 + o2)
+                data = o1 + o2
+                stack.append(data)
     return result
+
 
 for tc in range(1, T+1):
     post_fix = input().split()
