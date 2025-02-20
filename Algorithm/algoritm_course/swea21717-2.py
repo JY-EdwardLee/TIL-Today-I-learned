@@ -1,6 +1,5 @@
 # import sys
 # sys.stdin = open("input.txt", "r")
-from collections import deque
 
 
 # 사람의 수 N, K번째 나열
@@ -9,24 +8,29 @@ k = int(input())
 
 
 def solution(n, k):
-    arr = deque([num for num in range(1, n+1)])
+    arr = [num for num in range(1, n+1)]
     answer = []
     count = 0
     i = 0
-    def f(i, n):
-        nonlocal answer
+    p = [0] * n
+    used = [0] * n
+    def f(i, N):
         nonlocal count
-        if i == n:
+        if i == N:  # p[i]를 모두 채운 경우
             count += 1
             if count == k:
-                answer
+                return p
         else:
-            for j in range(i, n):
-                arr.rotate(1)
-                f(i + 1, n)
-                arr.rotate(-1)
+            for j in range(N):  # 아직 p에 사용하지 않은 숫자를 찾아
+                if used[j] == 0:
+                    p[i] = arr[j]
+                    used[j] = 1  # arr[j] 사용
+                    result = f(i + 1, N)
+                    if result:
+                        return result
+                    used[j] = 0  # arr[j]를 다른 자리에서 사용할 수있도록 함
 
-    f(i, n)
+    answer = f(i, n)
     return answer
 
 

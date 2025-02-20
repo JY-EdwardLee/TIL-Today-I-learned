@@ -2,7 +2,7 @@ import sys
 sys.stdin = open("input.txt", "r")
 
 T = int(input())
-
+# 델타 상하좌우
 dy = [-1, 1, 0, 0]
 dx = [0, 0, -1, 1]
 
