@@ -1,0 +1,125 @@
+body {
+  padding: 0;
+  margin: 70px 0;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-left: 20px;
+  margin: 0;
+  background-color: olivedrab;
+  color: white;
+}
+
+/* title bold 특성 묶기 */
+.title {
+  font-weight: bold;
+}
+
+.big-title {
+  font-size: 48px;
+  text-align: center;
+}
+
+.subbig-title {
+  margin: 0px;
+  font-size: 36px;
+  color: #121212;
+}
+
+.article-title {
+  font-size: 24px;
+}
+
+.article-subtitle { 
+  font-size: 18px;
+  color: #454545;
+}
+
+
+/* box 특성 */
+.box {
+  display: flex;
+}
+
+.subtitlebox {
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(255, 196, 0);
+  padding: 20px;
+}
+
+.flexbox {
+  background-color: #f1f1f1;
+  align-items: center;
+  height: 70px;
+}
+
+/* flex -> card_head로 명칭 */
+.card_head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 30px;
+}
+
+.subdescription {
+  color: #454545
+}
+
+.descrition {
+  padding: 0 15px;
+  background-color: rgba(255, 213, 127, .3);
+}
+
+.article {
+  margin: 40px;
+}
+
+.card {
+  background-color: #f8f8f8;
+  padding: 20px;
+  box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, .2);
+  border-radius: 5px;
+  margin: 30px 0px;
+}
+
+
+ul {
+  list-style: none;
+  font-size: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin: 10px 20px;
+}
+
+.home {
+  margin: 0;
+  width: 100px;
+  height: 70px;
+  background-color: orangered;
+  text-align: center;
+  line-height: 70px;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.main {
+  color: white
+}

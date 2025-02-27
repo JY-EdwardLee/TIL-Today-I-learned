@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  </style>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-6 offset-3">
+        <div class="alert bg-danger text-white">
+          Invalid Login or password
+        </div>
+        <div class="d-block fs-1 fw-bold text-dark">
+          SSAFY 전용 Gitlab 시스템
+        </div>
+        <hr>
+        <div class="card" style="width: 100;">
+          <div class="card-header border-2 border-primary d-flex justify-content-center p-3 fw-bold bg-white">
+            Sign in
+          </div>
+          <div class="card-body pe-4">
+            <div class="d-flex flex-column mb-3">
+              <label class=" p-2 fw-bold" for="id_input">Username or Email</label>
+              <input class="form-control p-2 ms-2" id="id_input" type="text">
+            </div>
+            <div class="d-flex flex-column mb-3">
+              <label class="p-2 fw-bold" for="password_input">Password</label>
+              <input class="form-control p-2 ms-2" id="password_input" type="password">
+            </div>
+            <div class="d-flex justify-content-between mb-3">
+              <div class="form-check ms-2">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Default checkbox
+                </label>
+              </div>
+              <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="#">
+                Forgot your password?
+              </a>
+            </div>
+            <button type="button" class="btn btn-success w-100">Sign in</button>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
