@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div p {
+      color: blue;
+    }
+    div > p {
+      color: crimson;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <p>자식</p>
+      <div style="margin-left: 3rem;">
+        <span><p>손자</p></span>
+      </div>
+    <p>자식</p>
+  </div>
+</body>
+</html>
+
+<!-- 자손 결합자는, 부모태그의 하위에 있는 모든 항목 -->
+ <!-- 자식 결합자는, 부모 태그의 직계(1차)하위에 있는 -->
