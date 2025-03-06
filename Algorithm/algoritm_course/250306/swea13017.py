@@ -1,6 +1,6 @@
 import sys
 import decimal
-sys.stdin = open('input.txt', 'r')
+sys.stdin = open('../input.txt', 'r')
 
 
 def dec_to_bit(dec):
