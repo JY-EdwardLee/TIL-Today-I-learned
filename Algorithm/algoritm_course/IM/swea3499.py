@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open("algoritm_course/input.txt", "r")
+sys.stdin = open("../input.txt", "r")
 
 
 T = int(input())
