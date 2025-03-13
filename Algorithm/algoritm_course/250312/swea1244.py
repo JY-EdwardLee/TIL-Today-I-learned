@@ -2,17 +2,17 @@ import sys
 sys.stdin = open("../input.txt", "r")
 
 def get_max(nums, trade):
-    t = 0       # 카드 변경 횟수
-    start = 0   # 카드 변경 시작 범위
+    t, start = 0, 0       # 카드 변경 횟수, 카드 변경 시작 범위
+    N = len(nums)
     while trade > t:
         # 기저조건? 카드 전체 점검 완료 시 맨 뒷자리 두개만 바꿔주기
-        if start >= len(nums):  # 시작 변경 범위가 전부 확인 완료하여 카드 길이보다 길어질 시
+        if start >= N:  # 시작 변경 범위가 전부 확인 완료하여 카드 길이보다 길어질 시
             nums[-1], nums[-2] = nums[-2], nums[-1]
             t += 1  # 변경 횟수 + 1
             continue
         # 범위 내 최댓값의 인덱스와 최소값의 인덱스 위치 바꾸기
         max_idx = []    # 점검 범위의 최댓값이 속한 인덱스의 모음
-        for i in range(start, len(nums)):
+        for i in range(start, N):
             if nums[i] == max(nums[start:]):
                 max_idx.append(i)
         chance = len(max_idx)   # 최댓값이 여러개 일 수도 있음
