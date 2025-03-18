@@ -42,8 +42,8 @@ for tc in range(1, T+1):
         for j in range(M):
             if arr[i][j] == "W":
                 get_dist(arr, (i,j), N, M)
-    for row in arr_1:
-        print(*row)
+    # for row in arr_1:
+    #     print(*row)
     for row in arr_1:
         total += sum(row)
     print(f'#{tc} {total}')

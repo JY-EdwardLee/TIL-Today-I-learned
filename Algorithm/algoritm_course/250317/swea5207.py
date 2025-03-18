@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open("input.txt", "r")
+sys.stdin = open("../input.txt", "r")
 
 def bin_search(arr, k):
     l, r = 0, len(arr)-1
