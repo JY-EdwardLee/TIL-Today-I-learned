@@ -2,22 +2,28 @@ from collections import deque
 
 
 def bfs(n, m):
+    d = [0] * 1000000
     que = deque()
-    que.append((m, 0))
+    que.append(n)
     while True:
-        m, cnt = que.popleft()
-        if m == n:
-            return cnt
-        for cal in cal_list:
-            if cal != 2 and 1 <= m + cal < 1000000:
-                que.append((m + cal, cnt + 1))
-            elif 1 <= m/cal < 1000000 and m%2 == 0:
-                que.append((m//cal, cnt + 1))
+        n = que.popleft()
+        if n == m:
+            return d[n]
+        for j in cal_list:
+            if j != 2 and 0 < n+j < 1000000:
+                if d[n+j] == 0 or d[n+j] > d[n] + 1:
+                    que.append(n + j)
+                    d[n+j] = d[n] + 1
+            else:
+                if 0 < n*j < 1000000:
+                    if d[n*j] == 0 or d[n*j] > d[n] + 1:
+                        que.append(n * j)
+                        d[n*j] = d[n] + 1
 
 
 T = int(input())
 
 for tc in range(1, T+1):
     N, M = map(int, input().split())
-    cal_list = [-1, 1, 2, 10]
+    cal_list = [1, -1, 2, -10]
     print(f'#{tc} {bfs(N, M)}')
