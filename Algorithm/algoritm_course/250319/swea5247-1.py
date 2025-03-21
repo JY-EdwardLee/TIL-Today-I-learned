@@ -2,7 +2,7 @@ from collections import deque
 
 
 def bfs(n, m):
-    d = [0] * 999999
+    d = [0] * 1000001
     cnt = 0
     for i in range(n, 1000000):
         cnt += 1

@@ -1,25 +1,31 @@
-from collections import deque
+import heapq
 delta = [(1, 0), (0, 1), (-1, 0), (0, -1)]
 
 
 def dijkstra(arr, n):
-    que = deque()
-    arr_17 = [[0]*n for _ in range(n)]
+    cnt = 0
+    heap = []
+    arr_17 = [[float('inf')]*n for _ in range(n)]
     i = j = 0
+    flag, cost = 0, arr[0][0]
     while True:
-        for di, dj in delta:
-            ni = i + di
-            nj = j + dj
-            if 0 <= ni < N and 0 <= nj < N:
-                if arr_17[ni][nj] == 0 or arr_17[ni][nj] > arr_17[i][j] + arr[ni][nj]:
-                    arr_17[ni][nj] = arr_17[i][j] + arr[ni][nj]
-                    que.append((ni, nj))
-        if que:
-            i, j = que.popleft()
+        if arr_17[i][j] >= cost:
+            arr_17[i][j] = cost
+            for di, dj in delta:
+                ni = i + di
+                nj = j + dj
+                if 0 <= ni < n and 0 <= nj < n:
+                    if arr_17[ni][nj] > arr_17[i][j] + arr[ni][nj]:
+                        arr_17[ni][nj] = cost + arr[ni][nj]
+                        cnt += 1
+                        heapq.heappush(heap, (arr_17[i][j] + arr[ni][nj], ni, nj))
+        if heap:
+            cost, i, j = heapq.heappop(heap)
+            # if (i, j) == (n-1, n-1):
+            #     return cost, cnt
         else:
             break
-    return arr_17[n-1][n-1]
-
+    return arr_17[n-1][n-1], cnt
 
 T = int(input())
 

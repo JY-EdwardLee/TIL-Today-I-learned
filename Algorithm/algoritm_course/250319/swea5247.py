@@ -2,7 +2,7 @@ from collections import deque
 
 
 def bfs(n, m):
-    d = [0] * 1000000
+    d = [0] * 1000001
     que = deque()
     que.append(n)
     while True:
@@ -10,12 +10,12 @@ def bfs(n, m):
         if n == m:
             return d[n]
         for j in cal_list:
-            if j != 2 and 0 < n+j < 1000000:
+            if j != 2 and 0 < n+j <= 1000000:
                 if d[n+j] == 0 or d[n+j] > d[n] + 1:
                     que.append(n + j)
                     d[n+j] = d[n] + 1
             else:
-                if 0 < n*j < 1000000:
+                if 0 < n*j <= 1000000:
                     if d[n*j] == 0 or d[n*j] > d[n] + 1:
                         que.append(n * j)
                         d[n*j] = d[n] + 1
