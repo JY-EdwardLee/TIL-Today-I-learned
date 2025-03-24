@@ -1,0 +1,17 @@
+{% extends "articles/base.html" %}
+
+{% block content %}
+<p>{{digimon}}몬의 파트너는 {{partner}}입니다.</p>
+<h2>디지몬 목록</h2>
+<ul>
+    {%for digi in partner_digimons%}
+    <li>{{digi}}</li>
+    {%endfor%}
+</ul>
+
+{%if digimon == '아구' or digimon == '파피'%}
+    <p>주인공이군요</p>
+{%else%}
+    <p>{{digimon}}는 궁극체도 없고 파트너도 {{partner}}입니다..</p>    
+{%endif%}
+{% endblock content %}
