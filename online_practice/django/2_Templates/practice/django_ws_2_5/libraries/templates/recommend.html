@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}<body>
+  <h1>주목할 만한 신간 도서 목록</h1>
+  {% for item in result %}
+    <p class = "fw-bold fs-4">제목 : {{ item.title }}</p>
+    <p class = "text-secondary fs-5">저자: {{ item.author }}</p>
+    <hr>
+  {% endfor %}
+</body>
+
+{% endblock content %}

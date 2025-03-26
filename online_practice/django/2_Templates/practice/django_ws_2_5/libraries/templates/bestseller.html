@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>베스트 셀러 목록</h1>
+  {% for item in result %}
+    {% if forloop.counter == 1 %}
+    <div class = "bg-danger-subtle">
+      <p class = "fw-bold fs-4">제목 : {{ item.title }}</p>
+      <p class = "text-secondary fs-5">저자 : {{ item.author }}</p>
+      <p class = "fs-6">설명 : {{ item.bestDuration }}</p>
+      <hr>
+    </div>
+    {% elif forloop.counter == 2 %}
+    <div class = "bg-primary-subtle">
+      <p class = "fw-bold fs-4">제목 : {{ item.title }}</p>
+      <p class = "text-secondary fs-5">저자 : {{ item.author }}</p>
+      <p class = "fs-6">설명 : {{ item.bestDuration }}</p>
+      <hr>
+    </div>
+    {% elif forloop.counter == 3 %}
+    <div class = "bg-success-subtle">
+      <p class = "fw-bold fs-4">제목 : {{ item.title }}</p>
+      <p class = "text-secondary fs-5">저자 : {{ item.author }}</p>
+      <p class = "fs-6">설명 : {{ item.bestDuration }}</p>
+      <hr>
+    </div>
+    {% else %}
+    <p class = "fw-bold fs-4">제목 : {{ item.title }}</p>
+    <p class = "text-secondary fs-5">저자 : {{ item.author }}</p>
+    <p class = "fs-6">설명 : {{ item.bestDuration }}</p>
+    <hr>
+    {% endif %}
+  {% endfor %}
+{% endblock content %}
