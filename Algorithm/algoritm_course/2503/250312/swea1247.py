@@ -1,6 +1,6 @@
 import itertools
 import sys
-sys.stdin = open("../input.txt", "r")
+sys.stdin = open("../../input.txt", "r")
 
 
 def get_dist(a, b):

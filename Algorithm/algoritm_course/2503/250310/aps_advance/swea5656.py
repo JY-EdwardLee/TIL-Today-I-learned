@@ -3,7 +3,7 @@
 import sys
 from collections import deque
 
-sys.stdin = open("../../input.txt", "r")
+sys.stdin = open("../../../input.txt", "r")
 destroyer = deque()
 delta = [[0, 1], [1, 0], [0, -1], [-1, 0]]
 

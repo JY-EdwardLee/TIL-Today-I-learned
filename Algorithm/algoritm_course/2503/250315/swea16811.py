@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open("../input.txt", "r")
+sys.stdin = open("../../input.txt", "r")
 
 index_c = [(1, 0), (0, 1), (0, 0)]
 index_d = [(1, 0), (1, 1), (0, 0)]

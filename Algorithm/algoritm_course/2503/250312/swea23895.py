@@ -1,6 +1,6 @@
 import sys
 import itertools
-sys.stdin = open("../input.txt", "r")
+sys.stdin = open("../../input.txt", "r")
 
 T = int(input())
 
@@ -16,8 +16,6 @@ for tc in range(1, T+1):
             y, x = order[i]-1, order[i+1]-1
             cost += arr[y][x]
             i += 1
-            if cost > total_cost:
-                break
         cost += arr[order[-1]-1][0]
         total_cost = min(total_cost, cost)
     print(f'#{tc} {total_cost}')

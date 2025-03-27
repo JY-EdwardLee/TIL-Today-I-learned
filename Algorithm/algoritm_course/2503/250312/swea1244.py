@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open("../input.txt", "r")
+sys.stdin = open("../../input.txt", "r")
 
 def get_max(nums, trade):
     t = 0       # 카드 변경 횟수
