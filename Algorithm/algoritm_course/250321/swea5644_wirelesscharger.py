@@ -51,3 +51,4 @@ for tc in range(1, T+1):
                 max_round = max(max_round, charger[l])
         total += max_round
     print(f'#{tc} {total}')
+
