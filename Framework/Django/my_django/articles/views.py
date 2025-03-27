@@ -1,5 +1,6 @@
 from django.shortcuts import render
 import random
+from .models import Article
 
 # Create your views here.
 def index(request):
@@ -50,3 +51,12 @@ def detail(request, num):   # variable routing의 변수를 num으로 받음 (re
         'num': num
     }
     return render(request, 'articles/detail.html', context)
+
+
+def read_all(request):
+    # 1. DB에 전체 게시글 요청
+    articles = Article.objects.all()
+    context = {
+        'articles': articles,
+    }
+    return render(request, 'articles/read.html', context)

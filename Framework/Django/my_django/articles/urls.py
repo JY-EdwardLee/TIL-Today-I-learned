@@ -12,4 +12,5 @@ urlpatterns = [
     path('throw/', views.throw, name='throw'),
     path('catch/', views.catch, name='catch'),
     path('<int:num>/', views.detail, name='article'),
+    path('read/', views.read_all, name='read'),
 ]
