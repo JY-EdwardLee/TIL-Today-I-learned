@@ -7,6 +7,18 @@
 </head>
 <body>
     <h1>Detail</h1>
-    <h2>{{num}}번 게시글입니다.</h2>
+    <a href="{% url "articles:edit" article.pk %}">수정</a>
+    <h2>{{article.pk}}번 게시글입니다.</h2>
+    <h3>{{article.title}}</h3>
+    <h4>{{article.content}}</h4>
+    <h5>{{article.created_at}}</h5>
+    <h5>{{article.updated_at}}</h5>
+    <hr>
+    <form action="{% url "articles:delete" article.pk%}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="삭제">
+    </form>
+    <a href="{% url "articles:read" %}">[back]</a>
+
 </body>
 </html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>메인 페이지</h1>    
+    <a href="{% url "articles:new" %}">[create]</a>
+    {% comment %} 전체 게시글 출력 {% endcomment %}
+    {% for article in articles %}
+    <ul>
+    <li><p>{{article.pk}}번째 글</p></li>
+    <li><p>제목 : {{article.title}}</p></li>
+    <hr>
+    </ul>
+    {% endfor %}
+</body>
+</html>

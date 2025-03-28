@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>맛집 상세정보</h1>
+    <div>
+        <p>식당 번호: {{restaurant.pk}}</p>
+        <p>식당 번호: {{restaurant.title}}</p>
+        <p>식당 번호: {{restaurant.describtion}}</p>
+        <p>식당 번호: {{restaurant.address}}</p>
+        <p>식당 번호: {{restaurant.phone_number}}</p>
+    </div>
+    <hr>
+    <a href="{% url "restaurants:edit" restaurant.pk%}">[UPDATE]</a>
+    <form action="{% url "restaurants:delete" restaurant.pk  %}" method=POST>
+        {% csrf_token %}
+        <input type="submit" value="DELETE">
+    </form>
+    <hr>
+    <a href="{% url "restaurants:index" %}">[BACK]</a>
+</body>
+</html>
