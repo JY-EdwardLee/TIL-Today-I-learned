@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 import random
 from .models import Article
+from .forms import ArticleForm
 
 # Create your views here.
 def index(request):
@@ -69,28 +70,36 @@ def read_all(request):
 # CREATE
 ## 1. new 함수 (create할 값을 입력할 페이지를 렌더링)
 def new(request):
-    return render(request, 'articles/new.html')
+    form = ArticleForm()
+    context = {
+        'form': form,
+    }
+    return render(request, 'articles/new.html', context)
 
 
 ## 2. create 함수
 def create(request):
+    # 1. 기본값
     # 사용자로부터 입력값 추출
+    '''
     title = request.POST.get('title')
     content = request.POST.get('content')
-    # DB에 저장 요청
-    # 1. 
-    # article = Article()
-    # article.title =title
-    # article.content = content
-    # article.save()
-    # 2.
+
     article = Article(title=title, content=content)
     article.save()
-    # 3. 유효성 검사가 안됨..
-    # Article.objects.create(title=title, content=content)
-    # return render(request, 'articles/create.html') # GET 쓸 때나 씀
-    return redirect('articles:detail', article.pk)  # POST는 redirect가 어울림
-
+    '''
+    # 2 ModelForm으로 create
+    # request를 POST형식으로 받은 querydict를 articleform의 인자로 하여 form 함수에 선언
+    form = ArticleForm(request.POST)
+    if form.is_valid():     # 유효성 검사
+        article = form.save()
+        return redirect('articles:detail', article.pk)
+    context = {
+        'form': form,
+    }    
+    # return redirect('articles:detail', article.pk)  # POST는 redirect가 어울림
+    return render(request, 'articles/new.html', context)
+ 
 
 def delete(request, pk):
     # 어떤 게시글을 지우는지 먼저 조회
