@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Detail</h1>
-    <a href="{% url "articles:edit" article.pk %}">수정</a>
+    <a href="{% url "articles:update" article.pk %}">수정</a>
     <h2>{{article.pk}}번 게시글입니다.</h2>
     <h3>{{article.title}}</h3>
     <h4>{{article.content}}</h4>

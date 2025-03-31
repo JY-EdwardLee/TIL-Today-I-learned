@@ -78,7 +78,7 @@ def new(request):
 
 
 ## 2. create 함수
-def create(request):
+def create_(request):
     # 1. 기본값
     # 사용자로부터 입력값 추출
     '''
@@ -87,6 +87,7 @@ def create(request):
 
     article = Article(title=title, content=content)
     article.save()
+    return redirect('articles:detail', article.pk)  # POST는 redirect가 어울림
     '''
     # 2 ModelForm으로 create
     # request를 POST형식으로 받은 querydict를 articleform의 인자로 하여 form 함수에 선언
@@ -95,11 +96,27 @@ def create(request):
         article = form.save()
         return redirect('articles:detail', article.pk)
     context = {
-        'form': form,
+        'form': form, # 유효성 검사 실패 사유 담기
     }    
-    # return redirect('articles:detail', article.pk)  # POST는 redirect가 어울림
     return render(request, 'articles/new.html', context)
- 
+
+
+# 3. new + create 함수
+def create(request):
+    # 1. 요청 메서드가 POST라면
+    if request.method == 'POST':
+        form = ArticleForm(request.POST)
+        if form.is_valid():     # 유효성 검사
+            article = form.save()
+            return redirect('articles:detail', article.pk)
+    # 2. 요청 메서드가 POST가 아니라면 (PUT, DELETE도 나올 수도 있음..)
+    else:    
+        form = ArticleForm()
+    context = {
+        'form': form,
+    }
+    return render(request, 'articles/create.html', context)
+
 
 def delete(request, pk):
     # 어떤 게시글을 지우는지 먼저 조회
@@ -112,17 +129,47 @@ def delete(request, pk):
 def edit(request, pk):
     # 어떤 게시글 정보 가져올지 조회
     article = Article.objects.get(pk=pk)
+    form = ArticleForm(instane=article)
     context = {
-        'article': article
+        'article': article,
+        'form': form,
     }
     return render(request, 'articles/edit.html', context)
+
+def update_(request, pk):
+    # 어떤 글을 수정할지 조회
+    article = Article.objects.get(pk=pk)
+    # Modelform을 썼을 때, 
+    form = ArticleForm(request.POST, instance=article)
+    if form.is_valid(): # 유효성 검사
+        form.save()
+        return redirect('articles:detail', article.pk)
+    context = {
+        'article': article,
+        'form': form,
+    }
+    return render(request, 'articles/edit.html', context)
+    # # POST로 받은 값을 기존 인스턴스에 오버라이드
+    # article.title = request.POST.get('title')
+    # article.content = request.POST.get('content')
+    # # DB에 저장 요청
+    # article.save()
+    # return redirect('articles:detail', article.pk)  # POST는 redirect가 어울림
+
 
 def update(request, pk):
     # 어떤 글을 수정할지 조회
     article = Article.objects.get(pk=pk)
-    # POST로 받은 값을 기존 인스턴스에 오벌이드
-    article.title = request.POST.get('title')
-    article.content = request.POST.get('content')
-    # DB에 저장 요청
-    article.save()
-    return redirect('articles:detail', article.pk)  # POST는 redirect가 어울림
+    # Modelform을 썼을 때, 
+    if request.method == 'POST':
+        form = ArticleForm(request.POST, instance=article)
+        if form.is_valid(): # 유효성 검사
+            form.save()
+            return redirect('articles:detail', article.pk)
+    else:
+        form = ArticleForm(instance=article)
+    context = {
+        'article': article,
+        'form': form,
+    }
+    return render(request, 'articles/update.html', context)
