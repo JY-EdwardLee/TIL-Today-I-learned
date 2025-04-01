@@ -98,14 +98,14 @@ def create_(request):
     context = {
         'form': form, # 유효성 검사 실패 사유 담기
     }    
-    return render(request, 'articles/new.html', context)
+    return render(request, 'articles/create.html', context)
 
 
 # 3. new + create 함수
 def create(request):
     # 1. 요청 메서드가 POST라면
     if request.method == 'POST':
-        form = ArticleForm(request.POST)
+        form = ArticleForm(request.POST, request.FILES) # 꼭 키워드 인자 안해도 됨
         if form.is_valid():     # 유효성 검사
             article = form.save()
             return redirect('articles:detail', article.pk)
@@ -162,7 +162,7 @@ def update(request, pk):
     article = Article.objects.get(pk=pk)
     # Modelform을 썼을 때, 
     if request.method == 'POST':
-        form = ArticleForm(request.POST, instance=article)
+        form = ArticleForm(request.POST, request.FILES, instance=article)
         if form.is_valid(): # 유효성 검사
             form.save()
             return redirect('articles:detail', article.pk)

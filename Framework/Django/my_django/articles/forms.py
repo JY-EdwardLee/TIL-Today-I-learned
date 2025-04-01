@@ -10,5 +10,5 @@ class ArticleForm_(forms.Form):
 class ArticleForm(forms.ModelForm):
 	class Meta: # 모델폼 정보 작성
 		model = Article
-		exclude = ('title',)
+		# exclude = ('title',)
 		fields = '__all__'

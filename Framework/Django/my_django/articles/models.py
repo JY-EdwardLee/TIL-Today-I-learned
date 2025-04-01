@@ -8,6 +8,7 @@ class Article(models.Model): # Model이라는 부모 클래스가 이미 작성�
 	# 필드(열) 이름 = models.데이터의 유형(제약조건)
 	title = models.CharField(max_length=10) # 제목
 	content = models.TextField() # 내용
+	image = models.ImageField(blank=True, upload_to='%Y%m%d/')
 	created_at = models.DateTimeField(auto_now_add=True) # auto_now_add 데이터가 첨 생성
 	updated_at = models.DateTimeField(auto_now=True) # auto_now 데이터가 저장될 때마다
 
