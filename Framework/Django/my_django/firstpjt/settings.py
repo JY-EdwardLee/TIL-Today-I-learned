@@ -33,10 +33,11 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # 1. 직접 생성한 앱
     'articles',
-    # 2. 설치한 앱 (3rd party library)
+    'accounts',
     'pages',
-    # 3. 내장 앱
+    # 2. 설치한 앱 (3rd party library)
     'django_extensions',
+    # 3. 내장 앱
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -135,3 +136,7 @@ MEDIA_URL = 'media/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# User class Override (auth to account)
+AUTH_USER_MODEL = 'accounts.User'
