@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <p>hello, {{account.username}}</p>
+    <p>hello, {{user.username}}</p>
     <a href="{% url "accounts:login" %}">LOGIN</a>
     <form action="{% url "accounts:logout" %}" method="post">
         <input type="submit" value="LOGOUT">
