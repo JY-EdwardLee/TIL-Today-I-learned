@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 import random
 from .models import Article
 from .forms import ArticleForm
@@ -49,6 +50,7 @@ def catch(request):
 
 # ORM wit view
 # READ
+@login_required
 def detail(request, pk):   # variable routing의 변수를 pk으로 받음 (request 다음)
     # 1. DB에 단일 게시글 요청
     article = Article.objects.get(pk=pk)
@@ -69,6 +71,7 @@ def read_all(request):
 
 # CREATE
 ## 1. new 함수 (create할 값을 입력할 페이지를 렌더링)
+@login_required
 def new(request):
     form = ArticleForm()
     context = {
@@ -78,6 +81,7 @@ def new(request):
 
 
 ## 2. create 함수
+@login_required
 def create_(request):
     # 1. 기본값
     # 사용자로부터 입력값 추출
@@ -102,6 +106,7 @@ def create_(request):
 
 
 # 3. new + create 함수
+@login_required
 def create(request):
     # 1. 요청 메서드가 POST라면
     if request.method == 'POST':
@@ -117,7 +122,7 @@ def create(request):
     }
     return render(request, 'articles/create.html', context)
 
-
+@login_required
 def delete(request, pk):
     # 어떤 게시글을 지우는지 먼저 조회
     article = Article.objects.get(pk=pk)
@@ -125,7 +130,7 @@ def delete(request, pk):
     article.delete()
     return redirect('articles:read')
 
-
+@login_required
 def edit(request, pk):
     # 어떤 게시글 정보 가져올지 조회
     article = Article.objects.get(pk=pk)
@@ -136,6 +141,7 @@ def edit(request, pk):
     }
     return render(request, 'articles/edit.html', context)
 
+@login_required
 def update_(request, pk):
     # 어떤 글을 수정할지 조회
     article = Article.objects.get(pk=pk)
@@ -156,7 +162,7 @@ def update_(request, pk):
     # article.save()
     # return redirect('articles:detail', article.pk)  # POST는 redirect가 어울림
 
-
+@login_required
 def update(request, pk):
     # 어떤 글을 수정할지 조회
     article = Article.objects.get(pk=pk)

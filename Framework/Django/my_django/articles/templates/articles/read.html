@@ -1,27 +1,30 @@
-{% load static %}
-
+{% comment %} Comments = 주석이다. {% endcomment %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static "articles/style.css" %}">
-    <title>Document</title>   
+    <title>Document</title>
 </head>
 <body>
-    <img src="{% static "articles/sample-1.png" %}" alt="">
-    <img src="{% static "sample-2.png" %}" alt="">
-    <h1>Articles</h1>    <a href="{% url "articles:create" %}">[new]</a>
-    {% comment %} 전체 게시글 출력 {% endcomment %}
+    {% comment %} {% if request.user.is_authenticated %}{% endif %} {% endcomment %}
+    {% comment %} 가능 {% endcomment %}
+    {% if request.user.is_authenticated %}
+    <h1>{{name}} 하위</h1>
+    <p>안녕하세요 {{user.username}}님</p>
+    <form action="{% url "accounts:delete" %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="회원탈퇴">
+    </form>
+    <a href="{% url "accounts:update" %}">회원 정보 수정</a>
     <form action="{% url "accounts:logout" %}" method="post">
         {% csrf_token %}
         <input type="submit" value="Logout">
     </form>
-    {% for article in articles %}
-    <p>Number : {{article.pk}}</p>
-    <p>Title : <a href="{% url "articles:detail" article.pk %}">{{article.title}}</a></p>
-    <p>content : {{article.content}}</p>
-    <hr>
-    {% endfor %}
+    {% else %}
+    <a href="{% url "accounts:login" %}">login</a>
+    <a href="{% url "accounts:signup" %}">[SIGNUP]</a>
+    {% endif %}
+    
 </body>
 </html>
