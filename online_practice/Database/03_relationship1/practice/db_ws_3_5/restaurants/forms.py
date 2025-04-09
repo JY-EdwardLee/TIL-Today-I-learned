@@ -37,6 +37,23 @@ class MenuForm(forms.ModelForm):
     class Meta:
         model = Menu
         exclude = ('restaurant', )
+        widgets = {
+            'name': forms.TextInput(
+                attrs={
+                'class':'form-control',
+                }
+            ),
+            'price': forms.NumberInput(
+                attrs={
+                    'class':'form-control',
+                }
+            ),
+            'is_vegan': forms.CheckboxInput(
+                attrs={
+                    'class':'form-check-input',
+                }
+            )
+        }
 
 class MenuUpdateForm(forms.ModelForm):
 
