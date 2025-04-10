@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>편의점 상세 정보</h1>
+  <p>점장 : {{ store.user }}</p>
+  <p>주소 : {{ store.address }}</p>
+  <p>체인점 여부 : {{ store.is_franchise }}</p>
+  {% if request.user == store.user %}
+  <hr>
+  <h2>신규 상품 등록</h2>
+  <form action="{% url "stores:create_products" store.pk %}" method='POST'>
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="물품 등록록">
+  </form>
+  {% endif %}
+  <hr>
+  <h2>전체 상품 목록</h2>
+  <ul>
+  {% for product in products %}
+    <li>이름 : {{product.name}}</li>
+    <li>가격 : {{product.price}}</li>
+  {% endfor %}
+  </ul>
+  <a href="{% url 'stores:index' %}">[돌아가기]</a>w
+{% endblock content %}
