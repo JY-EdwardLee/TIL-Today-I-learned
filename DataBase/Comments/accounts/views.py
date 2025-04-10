@@ -4,11 +4,13 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.shortcuts import redirect, render
+from django.views.decorators.http import require_http_methods, require_POST
 
 from .forms import CustomUserChangeForm, CustomUserCreationForm
 
 
 # Create your views here.
+@require_http_methods(['GET', 'POST'])
 def login(request):
     if request.user.is_authenticated:
         return redirect('articles:index')
@@ -28,11 +30,13 @@ def login(request):
 
 
 @login_required
+@require_POST
 def logout(request):
     auth_logout(request)
     return redirect('articles:index')
 
 
+@require_http_methods(['GET', 'POST'])
 def signup(request):
     if request.user.is_authenticated:
         return redirect('articles:index')
@@ -51,12 +55,14 @@ def signup(request):
 
 
 @login_required
+@require_POST
 def delete(request):
     request.user.delete()
     return redirect('articles:index')
 
 
 @login_required
+@require_http_methods(['GET', 'POST'])
 def update(request):
     if request.method == 'POST':
         form = CustomUserChangeForm(request.POST, instance=request.user)
@@ -72,6 +78,7 @@ def update(request):
 
 
 @login_required
+@require_http_methods(['GET', 'POST'])
 def change_password(request, user_pk):
     if request.method == 'POST':
         form = PasswordChangeForm(request.user, request.POST)
