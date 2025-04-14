@@ -3,13 +3,24 @@
 
 ## SSAFY
 
-### 1월 - 파이썬 
-- 25/01/16(목) : git 사용법
-- 25/01/17(금) : git 사용법(ver.2)/chatGPT API 활용하기
-- 25/01/20(월) : Basic syntax1 (python, numeric/sequence 자료형)
-- 25/01/21(화) : Basic syntax1 (sequence/non-sequence/기타 자료형, 형변환, 연산산)
-- 25/01/22(수) : Funtions
-- 25/01/23(목) : Modules & Control of flow
-- 25/01/24(금) : Data  Structure, 얕은/깊은 복사
-
-### 2월 - 파이썬, 알고리즘
+### 1월 - 스타트캠프, 파이썬
+    - AI learning
+        ㄴ Design thinking
+        ㄴ 로봇미래탐험
+        ㄴ 제품 개발 아이디어 발표
+    - Hello, SSAFY
+        ㄴ 잡싸피
+        ㄴ 멘토링
+    - 마크다운
+    - GIT
+### 2월 - 파이썬, 알고리즘, Web
+    - 파이썬
+    - 알고리즘
+    - Web
+        ㄴ HTML, CSS
+        ㄴ Bootstrap
+    - 일타싸피
+### 3월 - 알고리즘, Django
+    - 알고리즘
+    - Django
+### 4월 - SQL, Django
