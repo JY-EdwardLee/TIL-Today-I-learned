@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.shortcuts import redirect, render
 from django.views.decorators.http import require_http_methods, require_POST
+from django.contrib.auth import get_user_model
 
 from .forms import CustomUserChangeForm, CustomUserCreationForm
 
@@ -94,3 +95,23 @@ def change_password(request, user_pk):
         'form': form,
     }
     return render(request, 'accounts/change_password.html', context)
+
+
+def profile(request, user_pk):
+    User = get_user_model()
+    person = User.objects.get(pk=user_pk)
+    context = {
+        'person': person
+    }
+    return render(request, 'accounts/profile.html', context)
+
+@login_required
+def follow(request, user_pk):
+    User = get_user_model()
+    person = User.objects.get(pk=user_pk)
+    if person != request.user:
+        if request.user in person.followers.all():
+            person.followers.remove(request.user)
+        else:
+            person.followers.add(request.user)
+    return redirect('accounts:profile', person.pk)

@@ -113,3 +113,23 @@ def comments_delete(request, article_pk, comment_pk):
     if request.user == comment.user:
         comment.delete()
     return redirect('articles:detail', article_pk)
+
+
+@login_required
+def likes(request, article_pk):
+    # 좋아요를 누를 게시글이 어떤건지 조회
+    article = Article.objects.get(pk=article_pk)
+    
+    # 좋아요 추가 / 좋아요 취소
+    # 언제 추가하고 언제 취소할지 어떻게 구별할 것인지
+    # 좋아요를 요청하는 주체는 누구냐면 바로 request.user이다.
+    # request.user가 지금 특정 게시글에 좋아요를 누른 유저 목록에 있다면 vs 없다면
+    # 있다면
+    if request.user in article.like_users.all():
+        article.like_users.remove(request.user)
+        # request.user.like_articles.remove(article)
+    # 없다면
+    else:
+        article.like_users.add(request.user)
+        # request.user.like_articles.add(article)
+    return redirect('articles:index')
