@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{author.nickname}} 소설 목록</h1>
+
+<form action="{% url 'libraries:subscribe' author.pk %}" method="post">
+    {% csrf_token %}
+    {% if request.user in author.subscribed_users.all %}
+    <input type="submit" value="구독취소">
+    {% else %}
+    <input type="submit" value="구독">
+    {% endif %}
+</form>
+
+
+<ul>
+    {% for book in books %}
+    <li>
+        {{book.genre}}
+    </li>
+    <li>
+        {{book.title}}
+    </li>
+    <hr>
+    {% endfor %}
+</ul>
+{% endblock content %}
