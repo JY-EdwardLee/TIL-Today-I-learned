@@ -40,34 +40,28 @@
   <hr>
   {% if request.user == profile_owner %}
   <h3>내가 구독중인 유저들의 할 일 목록</h3>
-  <p>
-  </p>
   <ul>
-    {% for subscribing in profile_owner.subscribtion.all %}
+    {% for subscribing in profile_owner.subscription.all %}
     <li>
-      이름 : <a href="{% url "accounts:profile" subscribing.pk %}" >{{subscribing.username}}</a>
-      {% if subscribing.todo_set.all %}
-      {% for todo in subscribing.todo_set.all %}
-          {{todo}}
-      {% endfor %}
-    {% endif %}
+      이름 : <a href="{% url "accounts:profile" subscribing.username %}" >{{subscribing.username}}</a>
+      <ul>
+        {% if subscribing.todo_set.all %}
+          {% for todo in subscribing.todo_set.all %}
+            <li>{{todo.content}}</li>
+          {% endfor %}
+        {% endif %}
+      </ul>
     </li>
     {% endfor %}
   </ul>
-  {% else %}
+  {% endif %}
+  {% if request.user != profile_owner %}
   <h3>{{profile_owner}}님이 구독중인 유저 목록</h3>
   <ul>
-    {% for subscribing in profile_owner.subscribing.all %}
+    {% for subscribing in profile_owner.subscription.all %}
     <li>
-      이름 : <a href="{% url "accounts:profile" subscribing.pk %}" >{{subscribing.username}}</a>
+      이름 : <a href="{% url "accounts:profile" subscribing.username %}" >{{subscribing.username}}</a>
     </li>
-      {% if subscribing.todo_set.all %}
-        {% for todo in subscribing.todo_set.all %}
-          <li>
-            {{todo}}
-          </li>
-        {% endfor %}
-      {% endif %}
     {% endfor %}
   </ul>
   {% endif %}

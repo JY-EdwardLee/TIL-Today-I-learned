@@ -81,7 +81,7 @@ def profile(request, username):
     }
     users = profile_owner.subscription.all()
     for user in users:
-        print(user.pk)
+        print(user.todo_set.all())
     return render(request, 'accounts/profile.html', context)
 
 def subscribe(request, user_pk):
