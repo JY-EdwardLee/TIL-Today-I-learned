@@ -1,0 +1,12 @@
+[
+{
+    "model": "artists.artist",
+    "pk": 1,
+    "fields": {
+        "name": "아아",
+        "agency": "테스트",
+        "debut_date": "2025-04-17",
+        "is_group": true
+    }
+}
+]
