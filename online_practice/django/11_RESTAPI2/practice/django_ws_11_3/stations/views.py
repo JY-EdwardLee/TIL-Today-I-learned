@@ -36,7 +36,7 @@ def station_detail(request, station_pk):
     if request.method == 'GET':
         serializer = StationSerializer(station)
         return Response(serializer.data)
-    if reuqest.method == 'DELETE':
+    if request.method == 'DELETE':
         message = {'delete': f'{station.address}의 등록 번호{station.pk}번 충전소 정보를 삭제하였습니다.'}
         station.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

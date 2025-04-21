@@ -18,4 +18,4 @@ class Car(models.Model):
     station = models.ForeignKey(Station, on_delete=models.CASCADE)
     start_time = models.TimeField()
     model = models.CharField(max_length=100)
-    is_payment = models.BooleanField()
+    is_payment = models.BooleanField() 
