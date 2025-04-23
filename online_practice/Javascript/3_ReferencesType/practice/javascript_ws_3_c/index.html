@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const students = [
+      { name: 'Alice', scores: [85, 90, 95] },
+      { name: 'Bella', scores: [50, 80, 80] },
+      { name: 'Caley', scores: [90, 55, 35] },
+      { name: 'Dave', scores: [100, 100, 100] },
+      { name: 'Eve', scores: [88, 90, 92] }
+    ]
+    // 아래에 코드 작성
+    const makeAvgScores1 = (array) => {
+      const answer = []
+      for (let i = 0; i <= array.length-1; i++) {
+        let sum = 0
+        for (let k = 0; k < 3; k++) {
+          sum += array[i].scores[k]
+        }
+        answer[array[i].name] = sum/3
+      }
+      return answer
+    }
+    
+    const makeAvgScores2 = (students) => {
+      const answer = []
+      for (student of students) {
+        let sum = 0
+        for (score of student.scores) {
+          sum += score
+        }
+        answer[student.name] = sum/3
+      }
+      return answer
+    }
+
+    const makeAvgScores3 = (students) => {
+      const answer= []
+      students.map((student) => {
+        let sum = 0
+        student.scores.map((score) => {
+          sum += score
+        })
+        answer[student.name] = sum/student.scores.length
+      })
+      return answer
+    }
+    // 함수 호출
+    const result1 = makeAvgScores1(students)
+    const result2 = makeAvgScores2(students)
+    const result3 = makeAvgScores3(students)
+    console.log(result1)
+    console.log(result2)
+    console.log(result3)
+  </script>
+</body>
+
+</html>
