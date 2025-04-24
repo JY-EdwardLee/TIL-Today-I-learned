@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .bg-color {
+      background-color: #f0f0f0;
+      padding: 20px;
+      margin: 20px;
+    }
+
+    .fs-2 {
+      font-size: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h2>Input</h2>
+    <input type="text" class="text-input">
+    <span class="warning" style="color: red; display: none;">글자 수를 초과하였습니다.</span>
+    <p></p>
+  </div>
+  <div>
+    <h2>Color</h2>
+    <input type="text" class="color-input">
+  </div>
+
+  <script>
+    // 아래에 코드 작성
+    const inputTag = document.querySelector('.text-input')
+    const pTag =document.querySelector('p')
+    const spanTag = document.querySelector('span')
+    inputTag.addEventListener('focus', function(event){
+      pTag.classList.add('fs-2b','bg-color')
+    })
+    inputTag.addEventListener('focusout', function(event){
+      pTag.classList.remove('fs-2', 'bg-color')
+    })
+    inputTag.addEventListener('input', function(event){
+      if (event.currentTarget.value.length <= 5) {
+        spanTag.style = 'color: red; display: None;'
+        pTag.textContent = event.currentTarget.value
+      } else if (event.currentTarget.value.length > 5) {
+        spanTag.style = 'color: red;'
+        pTag.textContent = ''
+      }
+    })
+    
+    const colorTag = document.querySelector('input.color-input')
+    colorTag.addEventListener('input', function(event) {
+      pTag.style = `color: ${event.currentTarget.value};`
+    })
+    
+  </script>
+</body>
+
+</html>

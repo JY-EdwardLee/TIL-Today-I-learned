@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .font-crimson {
+      color: crimson;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="heading">Hover me!</h1>
+  <h2 class="sub-heading">Double Click me!</h2>
+  <p class="contents">Lorem ipsum dolor sit amet consectetur</p>
+
+  <script>
+    const randomTexts = [
+      'Lorem ipsum dolor sit amet consectetu',
+      'adipisicing elit. Repellendus delectus quam',
+      'similique quo ipsam maxime totam alias',
+      'quibusdam repudiandae voluptas dicta',
+      'voluptas voluptatibus exercitationem officiis'
+    ]
+  
+    // 아래에 코드 작성
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * max);
+    }
+    
+    const h1Tag = document.querySelector('h1')
+    value = h1Tag.textContent
+    h1Tag.addEventListener('mouseenter', function(event){
+      h1Tag.textContent = 'I am being hovered'
+    })
+    h1Tag.addEventListener('mouseleave', function(event){
+      h1Tag.textContent = value
+    })
+
+    const h2Tag = document.querySelector('h2')
+    h2Tag.addEventListener('dblclick', function(event){
+      h2Tag.classList.toggle('font-crimson')
+    })
+
+    const pTag = document.querySelector('p')
+    pTag.addEventListener('wheel', function(event) {
+      pTag.textContent = randomTexts[getRandomInt(5)]
+    })
+  </script>
+</body>
+
+</html>

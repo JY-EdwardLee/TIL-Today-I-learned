@@ -18,7 +18,7 @@
     person = {
       name : '홍길동',
       hobbies : ['법먹기', '공부하기', '숨쉬기'],
-      showHobbies: function () {
+      showHobbies: () => {
         console.log(`${this.name}의 취미 목록 :` )
         this.hobbies.forEach((hobby) => {
           console.log(`${this.name}은 ${hobby}를 좋아한다.`)
