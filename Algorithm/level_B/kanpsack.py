@@ -1,0 +1,23 @@
+T = int(input())
+
+for testcase in range(1, T + 1):
+    N, K = map(int, input().split())
+    w = [0 for _ in range(N + 1)]
+    v = [0 for _ in range(N + 1)]
+    for i in range(1, N + 1):
+        a, b = map(int, input().split())
+        w[i] = a
+        v[i] = b
+
+    dp = [[0 for _ in range(K + 1)] for _ in range(N + 1)]
+    come = [[0 for _ in range(K + 1)] for _ in range(N + 1)]
+
+    for i in range(1, N + 1):
+        for j in range(K + 1):
+            dp[i][j] = dp[i - 1][j]
+            come[i][j] = 1
+            if w[i] <= j and dp[i][j] < dp[i - 1][j - w[i]] + v[i]:
+                dp[i][j] = dp[i - 1][j - w[i]] + v[i]
+                come[i][j] = 2
+
+    print(f'#{testcase} {dp[N][K]}')
