@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Articles</h1>
+  {% if request.user.is_authenticated %}
+    <h3>Hello, {{ user.username }}</h3>
+    <a href="{% url 'accounts:profile' user.username %}">내 프로필</a>
+    <a href="{% url 'articles:create' %}">NEW</a>
+    <form action="{% url 'accounts:logout' %}" method="POST">
+      {% csrf_token %}
+      <input type="submit" value="Logout">
+    </form>  
+    <form action="{% url 'accounts:delete' %}" method="POST">
+      {% csrf_token %}
+      <input type="submit" value="회원탈퇴">
+    </form>  
+    <a href="{% url 'accounts:update' %}">회원정보 수정</a>
+  {% else %}
+    <a href="{% url 'accounts:login' %}">Login</a>
+    <a href="{% url 'accounts:signup' %}">Signup</a>
+  {% endif %}
+
+  <hr>
+  <div class = 'article-container'>
+  {% for article in articles %}
+    <p>작성자 : <a href="{% url 'accounts:profile' article.user.username %}">{{ article.user }}</a></p>
+    <p>글 번호: {{ article.pk }}</p>
+    <a href="{% url 'articles:detail' article.pk %}">
+      <p>글 제목: {{ article.title }}</p>
+    </a>
+    <p>글 내용: {{ article.content }}</p>
+    {% comment %} id에 숫자로 시작하는 값 넣지 않는다. {% endcomment %}
+    {% comment %} 동일한 기능을 하는 form tag는 동일한 class를 가진다. {% endcomment %}
+    {% comment %} html: kebob-case가 기본 컨벤션 {% endcomment %}
+    {% comment %} 모두 소문자로 작성해야함 {% endcomment %}
+    <form class = "like-forms" data-article-id="{{article.pk}}">
+      {% csrf_token %}
+      {% if request.user in article.like_users.all %}
+        <input id="like-button-{{article.pk}}" type="submit" value="좋아요 취소">
+      {% else %}
+        <input id="like-button-{{article.pk}}" type="submit" value="좋아요">
+      {% endif %}
+    </form>      
+    <hr>
+  {% endfor %}
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    const articleContainer = document.querySelector('.article-container')
+    // 한번 렌더링 되면 csrf 토큰들은 모두 같은 난수값을 가짐
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    articleContainer.addEventListener('submit', function(event){
+      event.preventDefault()
+      // axios 게시글에 좋아요ㅕ 기능 요청
+      console.log(event.target)
+      console.log(event.currentTarget)
+      // dataset property에 접근하기 위해서
+      // elemenr.dataset.propertyNmae을 작성하겸 되는데
+      //HTML에서는 kebob-casce로 작성한 속성명이, JS에서는 camelCase로 사용한다.
+      const articleId = event.target.dataset.articleId
+      console.log(articleId)
+      axios ({
+        method: 'POST',
+        headers : {'X-CSRFToken': csrftoken},
+        url : `/articles/${articleId}/likes/`
+      })
+      .then(response => {
+        console.log(response)
+        const isLike = response.data.is_like
+        const likeButton = document.querySelector(`#like-button-${articleId}`)
+        likeButton.value = isLike? '좋아여 취소' : '좋아여'
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    })
+  </script>
+</body>
+</html>
