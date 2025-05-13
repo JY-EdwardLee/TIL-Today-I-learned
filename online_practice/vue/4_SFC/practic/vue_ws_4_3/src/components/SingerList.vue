@@ -1,15 +1,22 @@
 <template>
+<div v-for="singer in singers" :key="singer">
   <div class="singer-card">
-    <h1>가수 이름</h1>
-    <div class="img-container">
-      <img src="@/assets/singer.jpg" alt="가수 이미지">
-    </div>
+    <h1>{{ singer.name }}</h1>
+      <SingerDetail/>
     <p>가수 소개글</p>
   </div>
+</div>
 </template>
 
 <script setup>
 // 컴포넌트 로직
+import {ref} from 'vue'
+import SingerDetail from '@/singers/SingerDetail.vue';
+const singers = ref([
+  {name : 'adele'},
+  {name : 'Weeknd'},
+  {name : 'ariana grande'},
+])
 </script>
 
 <style scoped>
