@@ -12,11 +12,14 @@ import HelloWorld from './components/HelloWorld.vue'
 
       <nav>
         <!-- url을 통한 이동 기능 구현 -->
-         <!-- to 속성엔 문자열로 path를 작성하도록 되어있다. -->
+          <!-- to 속성엔 문자열로 path를 작성하도록 되어있다. -->
           <!-- to 속성에, route에 정의된 어떤 name이 무엇인 것을 연결 -->
+          <!-- 로그인이 없으면 접근 못하게 -->
         <RouterLink :to="{name: 'home'}">Home</RouterLink>
         <RouterLink :to="{name: 'about'}">About</RouterLink>
-        <RouterLink :to="{name: 'user', params: {'id': 1}}">User</RouterLink>
+        <RouterLink :to="{name: 'user', params: { 'id': 1 } }">User</RouterLink>
+        <!-- 로그인 기능 -->
+        <RouterLink :to="{name:'login'}">Login</RouterLink>
       </nav>
     </div>
   </header>
