@@ -1,0 +1,43 @@
+import { ref, computed } from 'vue'
+import { defineStore } from 'pinia'
+
+export const useProductsStore = defineStore('products', () => {
+  const products = ref([
+    {
+    name: '상품 1',
+    imagePath: 'src/assets/product1.png',
+    price: 10000,
+    isFavorite: false
+    },
+    {
+    name: '상품 2',
+    imagePath: 'src/assets/product2.png',
+    price: 20000,
+    isFavorite: false
+    },
+    {
+    name: '상품 3',
+    imagePath: 'src/assets/product3.png',
+    price: 30000,
+    isFavorite: false
+    },
+    {
+    name: '상품 4',
+    imagePath: 'src/assets/product4.png',
+    price: 40000,
+    isFavorite: false
+    },
+  ])
+
+  const toggleFavorite = (product) => {
+    product.isFavorite = !product.isFavorite
+  }
+  
+  const countFavorite = computed(() => {
+    const count = products.value.filter(product => product.isFavorite === true).length
+    return count
+  })
+
+
+  return { products, toggleFavorite, countFavorite }
+}, {persist:true})
