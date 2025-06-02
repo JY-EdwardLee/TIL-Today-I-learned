@@ -1,7 +1,8 @@
 <template>
-    <h2>장바구니 페이지</h2>
+    <h2>상품 목록 페이지</h2>
     <div class="list">
     <ProductDetail 
+    v-for="product in store.products"
     :key="product.id"
     :product="product"
     />
@@ -9,14 +10,17 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
-import { useProductsStore } from '@/stores/products';
 import ProductDetail from '@/components/ProductDetail.vue';
+import { useProductsStore } from '@/stores/products';
+
 const store = useProductsStore()
-  store.products.filter(product => product.isFavorite === true)
-)
+
 </script>
 
 <style scoped>
-
+.list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
 </style>

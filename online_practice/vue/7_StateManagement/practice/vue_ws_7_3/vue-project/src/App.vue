@@ -2,6 +2,7 @@
 <nav>
 <RouterLink :to="{name: 'home'}" class="link">Home</RouterLink>
 <RouterLink :to="{name: 'products'}" class="link">Products</RouterLink>
+<RouterLink :to="{name: 'favorite'}" class="link" >Favorits</RouterLink>
 </nav>
 <div>
     <RouterView />

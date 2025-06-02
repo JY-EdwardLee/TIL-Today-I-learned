@@ -29,7 +29,9 @@ export const useProductsStore = defineStore('products', () => {
     },
   ])
 
+  const clickFavorite = function(product) {
     product.isFavorite = !product.isFavorite
   }
 
+  return { products, clickFavorite }
 })
